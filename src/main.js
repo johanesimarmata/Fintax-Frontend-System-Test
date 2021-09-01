@@ -3,4 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import "bootstrap/dist/css/bootstrap.min.css"
+import 'bootstrap'
+
 createApp(App).use(store).use(router).mount('#app')
+
+//token: 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
