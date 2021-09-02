@@ -47,12 +47,14 @@ export default {
                     return
                }
                this.currentPage += 1
+               this.moveToAnotherPage(this.currentPage)
           },
           previousPage(){
                if(!this.currentPage || this.currentPage === 1){
                     return
                }
                this.currentPage -= 1
+               this.moveToAnotherPage(this.currentPage)
           }
      },
      created(){
@@ -81,6 +83,7 @@ export default {
 
      .disabled .previousNextButton{
           background: rgba(70, 70, 70, 0.2);
+          color: rgba(0, 0, 0, 0.5) !important;
      }
 
      .page-item .page-link{
