@@ -9,7 +9,6 @@
                <div class="navbar-nav">
                     <a class="nav-link" href="/" v-bind:style="$router.currentRoute.value.path === '/' ? styleBold : ''">Home</a>
                     <a class="nav-link" href="/users" v-bind:style="$router.currentRoute.value.path === '/users' ? styleBold : ''">Users</a>
-                    <a class="nav-link" href="/resources" v-bind:style="$router.currentRoute.value.path === '/resources' ? styleBold : ''">Resources</a>
                     <a class="nav-link" href="/employees" v-bind:style="$router.currentRoute.value.path === '/employees' ? styleBold : ''">Employees</a>
                </div>
           </div>
