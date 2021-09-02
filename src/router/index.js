@@ -1,19 +1,72 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import store from '../store'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import ('../views/Home.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/login',
+    name: 'Login',
+    component: () => import ('../views/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/Register.vue')
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: () => import('../views/Users.vue'),
+    beforeEnter: (to, from, next) => {
+      if(store.state.auth.token === ''){
+        next({
+          path: '/login',
+          query: {
+            redirectFrom: to.fullPath
+          }
+        })
+      }else{
+        next()
+      }
+    }
+  },
+  {
+    path: '/resources',
+    name: 'Resources',
+    component: () => import('../views/Resources.vue'),
+    beforeEnter: (to, from, next) => {
+      if(store.state.auth.token === ''){
+        next({
+          path: '/login',
+          query: {
+            redirectFrom: to.fullPath
+          }
+        })
+      }else{
+        next()
+      }
+    }
+  },
+  {
+    path: '/employees',
+    name: 'Employees',
+    component: () => import('../views/Employees.vue'),
+    beforeEnter: (to, from, next) => {
+      if(store.state.auth.token === ''){
+        next({
+          path: '/login',
+          query: {
+            redirectFrom: to.fullPath
+          }
+        })
+      }else{
+        next()
+      }
+    }
   }
 ]
 
