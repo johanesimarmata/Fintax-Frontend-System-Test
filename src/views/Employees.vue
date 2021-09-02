@@ -2,7 +2,7 @@
      <div class="container">
           <loading v-if="isLoading"/>
           <div class="row" v-if="!isLoading">
-               <select class="form-select text-center" aria-label="Default select example" @change="handleShowCountChange" v-model="showDataCount" v-if="!isLoading">
+               <select class="form-select text-center" aria-label="Default select example" v-model="showDataCount" v-if="!isLoading">
                     <option v-bind:value="dataEmployees.length" v-bind:selected="showDataCount === dataEmployees.length">Showing all entries</option>
                     <option value="3" v-bind:selected="showDataCount === '3'">Showing 3 entries</option>
                     <option value="5" v-bind:selected="showDataCount === '5'">Showing 5 entries</option>
@@ -151,9 +151,6 @@ export default {
                this.dataEmployees.sort((a, b) => {
                     return ((a.id < b.id) ? -1 : ((a.id > b.id) ? 1 : 0))
                })
-          },
-          handleShowCountChange(){
-               console.log(this.showDataCount)
           },
           fetchEmployeeData(){
                axios.get('https://fakejsonapi.com/fake-api/employee/api/v1/employees').then((result) => {
