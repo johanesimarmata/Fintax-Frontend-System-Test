@@ -10,21 +10,11 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import ('../views/Login.vue')
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: () => import('../views/Register.vue')
-  },
-  {
-    path: '/users',
-    name: 'Users',
-    component: () => import('../views/Users.vue'),
+    component: () => import ('../views/Login.vue'),
     beforeEnter: (to, from, next) => {
-      if(store.state.auth.token === ''){
+      if(store.state.auth.token){
         next({
-          path: '/login',
+          path: '/page-not-found',
           query: {
             redirectFrom: to.fullPath
           }
@@ -35,9 +25,26 @@ const routes = [
     }
   },
   {
-    path: '/resources',
-    name: 'Resources',
-    component: () => import('../views/Resources.vue'),
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/Register.vue'),
+    beforeEnter: (to, from, next) => {
+      if(store.state.auth.token){
+        next({
+          path: '/page-not-found',
+          query: {
+            redirectFrom: to.fullPath
+          }
+        })
+      }else{
+        next()
+      }
+    }
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: () => import('../views/Users.vue'),
     beforeEnter: (to, from, next) => {
       if(store.state.auth.token === ''){
         next({
@@ -67,6 +74,15 @@ const routes = [
         next()
       }
     }
+  },
+  {
+    path: '/page-not-found',
+    name: 'NotFound',
+    component: () => import('../views/PageNotFound.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/page-not-found'
   }
 ]
 
