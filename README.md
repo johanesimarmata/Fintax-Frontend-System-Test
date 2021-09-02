@@ -1,5 +1,20 @@
 # fintax-frontend-system
 
+## Deployment
+```
+https://johanesimarmata-fintax-frontend-system.netlify.app/
+```
+
+## Description
+```
+Based on the Authentication API:
+You can register with -> email: eve.holt@reqres.in and password: pistol
+You can login with -> email: eve.holt@reqres.in and password: cityslicka
+
+Authentication and Users data from https://reqres.in/
+Employees data from https://fakejsonapi.com/
+```
+
 ## Project setup
 ```
 npm install
