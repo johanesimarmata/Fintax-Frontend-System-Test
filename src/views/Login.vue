@@ -49,9 +49,10 @@ export default {
                     this.setEmail(this.email)
                     this.clearForm()
                     this.$router.push({name : 'Home'})
-                    
+                    alert('Login Success, Welcome!')
                }).catch(() => {
                     this.clearForm()
+                    alert('Login failed, Please try again!')
                });
           },
           clearForm(){

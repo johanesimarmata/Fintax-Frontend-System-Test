@@ -42,9 +42,11 @@ export default {
                axios.post(`${this.apiDomain}/register`, data).then(() => {
                     this.clearForm()
                     this.$router.push({name : 'Login'})
+                    alert('Successfully create your account! Please login first!')
                }).catch((err) => {
                     console.log(err)
                     this.clearForm()
+                    alert('Failed to create your account! Please try again!')
                });
           },
           clearForm(){
